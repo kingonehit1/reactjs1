@@ -4,10 +4,11 @@ import Textfield from '@atlaskit/textfield';
 import LoginForm  from "./components/LoginForm";
 import { useState} from "react";
 import { v4 } from "uuid";
-import Todo from "./components/TodoList";
 import TodoList from "./components/TodoList";
 
 function App() {
+
+  //database
   const adminUser = [
     {
       email: "hoapro123@gmail.com",
@@ -20,6 +21,10 @@ function App() {
   ];
 
   const [user, setUser] = useState({name: "", email: ""});
+
+
+
+
   const [error, setError] = useState("");
   const [todolist, setTodoList] = useState([]);
   const [textInput, setTextInPut] = useState("");
@@ -33,7 +38,7 @@ function App() {
   const Login = details => {
     console.log(details);
     for(let h of adminUser){
-      if (details.email == h.email && details.password == h.password){
+      if (details.email === h.email && details.password === h.password){
         console.log("Login in");
         setUser({
             name: details.name,
@@ -53,7 +58,7 @@ function App() {
   return (
 
     <div className="App">
-      {(user.email != "") ? (
+      {(user.email !== "") ? (
         <div className="welcome"> 
           <h2>welcome, <span>{user.name}</span></h2>
         <Textfield name="add-todo" placeholder="Them viec can lam" elemAfterInput={
